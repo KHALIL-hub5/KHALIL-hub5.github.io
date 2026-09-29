@@ -105,15 +105,15 @@ const portfolioProjects: ProjectRecord[] = [
   {
     id: 'kh',
     title: 'KHdamli',
-    description: 'An employment marketplace connecting clients in Algeria with tradespeople, from plumbers to repair workers.',
-    summary: 'An employment marketplace connecting clients in Algeria with tradespeople.',
+    description: 'Clients post a job and get matched with plumbers, electricians, and repair workers nearby. Built as a cross-platform app with React Native and TypeScript.',
+    summary: 'A mobile marketplace that connects clients in Algeria with local tradespeople.',
     technologies: ['React Native', 'TypeScript'],
     categories: ['Mobile'],
     icon: 'smartphone',
     status: 'private',
     featured: true,
     name: 'KHdamli',
-    tagline: 'An employment marketplace connecting clients in Algeria with tradespeople.',
+    tagline: 'Find trusted tradespeople across Algeria',
     audience: 'Clients looking for a plumber, builder or repair worker, and the tradespeople who take the jobs.',
     stack: 'React Native, TypeScript',
     repoStatus: 'private',
@@ -156,14 +156,14 @@ const portfolioProjects: ProjectRecord[] = [
   {
     id: 'ml',
     title: 'MediLink-DZ',
-    description: 'A web platform bringing together Algerian healthcare information: medicines, practices, pharmacies, rentals, and patients.',
-    summary: 'A web platform bringing together Algerian healthcare information.',
+    description: 'Patients book care, doctors manage their consultations, and pharmacies and clinics stay connected in one place. I designed it with UML use-case, state, and ER diagrams.',
+    summary: 'A platform linking patients, doctors, pharmacies, and clinics in Algeria.',
     technologies: ['Web platform'],
     categories: ['Web'],
     icon: 'healthcare',
     status: 'available',
     name: 'MediLink DZ',
-    tagline: 'A web platform bringing together Algerian healthcare information.',
+    tagline: 'One health platform for all of Algeria',
     audience: 'Patients, doctors, pharmacists and administrators, all in one healthcare platform for Algeria.',
     stack: 'Web application',
     repoUrl: 'https://github.com/KHALIL-hub5/MediLink-DZ',
@@ -207,14 +207,17 @@ const portfolioProjects: ProjectRecord[] = [
   {
     id: 'un',
     title: 'ALIAS',
-    description: 'A campus management platform built with a microservices architecture; I led the risk analysis in a team of 9.',
-    summary: 'A campus management platform built with a microservices architecture.',
+    // TODO: review copy
+    description: 'The platform brings students, event organizers, and university administration into one campus management workflow for events. I led the risk analysis for a team project using a microservices architecture.',
+    // TODO: review copy
+    summary: 'A campus management platform connecting students, event organizers, and university administration across campus.',
     technologies: ['Microservices', 'Risk analysis'],
     categories: ['Web'],
     icon: 'server',
     status: 'coming-soon',
     name: 'ALIAS · UNIVENT',
-    tagline: 'A campus management platform built with a microservices architecture.',
+    // TODO: review copy
+    tagline: 'Campus events for students and organizers',
     audience: 'Students, event organizers and the university administration, part of the ALIAS campus platform.',
     stack: 'Microservices architecture',
     repoStatus: 'soon',
@@ -257,9 +260,12 @@ const portfolioProjects: ProjectRecord[] = [
   {
     id: 'swarm',
     title: 'Refactoring Swarm',
-    tagline: 'AI agents collaborate on software refactoring tasks.',
-    summary: 'A team project building an AI agent with large language models.',
-    description: 'A team project building an AI agent with large language models.',
+    // TODO: review copy
+    tagline: 'Collaborative AI agents for language-model refactoring',
+    // TODO: review copy
+    summary: 'A team-built AI project exploring agents that assist software refactoring with large language models.',
+    // TODO: review copy
+    description: 'Refactoring Swarm is a team project focused on building an AI agent for software refactoring. It explores how large language models can support automated code improvement.',
     technologies: ['AI agents', 'LLMs'],
     categories: ['AI'],
     icon: 'bot',
@@ -269,9 +275,12 @@ const portfolioProjects: ProjectRecord[] = [
   {
     id: 'networking',
     title: 'Networking Lab',
-    tagline: 'Secured Ubuntu networking between virtual machines.',
-    summary: 'SSH and FTP configured and secured between Ubuntu virtual machines.',
-    description: 'SSH and FTP configured and secured between Ubuntu virtual machines in VirtualBox.',
+    // TODO: review copy
+    tagline: 'Secured SSH and FTP between Ubuntu virtual machines',
+    // TODO: review copy
+    summary: 'A networking lab securing SSH and FTP connections between Ubuntu virtual machines in VirtualBox.',
+    // TODO: review copy
+    description: 'I configured SSH and FTP between Ubuntu virtual machines in VirtualBox, then secured the connections. The project demonstrates hands-on networking practice with Linux-based virtual infrastructure.',
     technologies: ['Ubuntu', 'SSH', 'FTP', 'VirtualBox'],
     categories: ['Networking'],
     icon: 'network',
