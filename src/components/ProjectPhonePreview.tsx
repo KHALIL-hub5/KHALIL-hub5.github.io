@@ -302,10 +302,11 @@ export function ProjectPhonePreview() {
             </aside>
             <div
               className="scene-stage duo-stage"
+              role="group"
+              aria-label="Web and mobile product preview connected through an API"
               onPointerMove={handlePointerMove}
               onPointerLeave={() => setTilt({ x: 0, y: 0 })}
               style={tiltStyle}
-              aria-label="Interactive browser, API, and mobile preview"
             >
               <div className="duo-scene">
                 <div className="mock-browser">
@@ -362,6 +363,8 @@ export function ProjectPhonePreview() {
             </aside>
             <div
               className="scene-stage phone-stage"
+              role="group"
+              aria-label="Interactive project phone preview"
               onPointerMove={handlePointerMove}
               onPointerLeave={() => setTilt({ x: 0, y: 0 })}
               style={tiltStyle}
