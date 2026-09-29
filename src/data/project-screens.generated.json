@@ -1,0 +1,140 @@
+{
+  "kh_mobile": [
+    {
+      "name": "Splash",
+      "src": "/projects/khdamli/mobile/splash.webp",
+      "width": 275,
+      "height": 607
+    },
+    {
+      "name": "Login",
+      "src": "/projects/khdamli/mobile/login.webp",
+      "width": 276,
+      "height": 600
+    },
+    {
+      "name": "Create account",
+      "src": "/projects/khdamli/mobile/create-account.webp",
+      "width": 374,
+      "height": 811
+    },
+    {
+      "name": "Select your role",
+      "src": "/projects/khdamli/mobile/select-your-role.webp",
+      "width": 295,
+      "height": 638
+    },
+    {
+      "name": "Work information",
+      "src": "/projects/khdamli/mobile/work-information.webp",
+      "width": 365,
+      "height": 798
+    }
+  ],
+  "ml_mobile": [
+    {
+      "name": "Welcome",
+      "src": "/projects/medilink-dz/mobile/welcome.webp",
+      "width": 265,
+      "height": 627
+    },
+    {
+      "name": "Sign in",
+      "src": "/projects/medilink-dz/mobile/sign-in.webp",
+      "width": 274,
+      "height": 612
+    },
+    {
+      "name": "Create account",
+      "src": "/projects/medilink-dz/mobile/create-account.webp",
+      "width": 223,
+      "height": 701
+    }
+  ],
+  "ml_web": [
+    {
+      "name": "Dashboard",
+      "src": "/projects/medilink-dz/web/dashboard.webp",
+      "width": 1000,
+      "height": 472
+    },
+    {
+      "name": "Sign in",
+      "src": "/projects/medilink-dz/web/sign-in.webp",
+      "width": 1000,
+      "height": 619
+    },
+    {
+      "name": "Reset password",
+      "src": "/projects/medilink-dz/web/reset-password.webp",
+      "width": 1000,
+      "height": 614
+    }
+  ],
+  "un_web": [
+    {
+      "name": "New proposal",
+      "src": "/projects/alias-univent/web/new-proposal.webp",
+      "width": 952,
+      "height": 762
+    },
+    {
+      "name": "Logistics",
+      "src": "/projects/alias-univent/web/logistics.webp",
+      "width": 952,
+      "height": 762
+    },
+    {
+      "name": "Proposal details",
+      "src": "/projects/alias-univent/web/proposal-details.webp",
+      "width": 952,
+      "height": 762
+    },
+    {
+      "name": "Profile",
+      "src": "/projects/alias-univent/web/profile.webp",
+      "width": 952,
+      "height": 762
+    }
+  ],
+  "un_mobile": [
+    {
+      "name": "Sign in",
+      "src": "/projects/alias-univent/mobile/sign-in.webp",
+      "width": 348,
+      "height": 774
+    },
+    {
+      "name": "Events",
+      "src": "/projects/alias-univent/mobile/events.webp",
+      "width": 348,
+      "height": 774
+    },
+    {
+      "name": "Reservations",
+      "src": "/projects/alias-univent/mobile/reservations.webp",
+      "width": 348,
+      "height": 774
+    },
+    {
+      "name": "Profile",
+      "src": "/projects/alias-univent/mobile/profile.webp",
+      "width": 348,
+      "height": 774
+    }
+  ],
+  "khdamliAssets": {
+    "logo": {
+      "src": "/projects/khdamli/logo.webp",
+      "width": 436,
+      "height": 228,
+      "bytes": 4652
+    },
+    "hero": {
+      "src": "/projects/khdamli/hero.webp",
+      "width": 428,
+      "height": 328,
+      "bytes": 7662
+    }
+  }
+}
