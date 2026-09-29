@@ -567,6 +567,7 @@
 .showroom-cap { transform: scale(.82); transform-origin: center bottom; }
 .showroom-building { transform: translateY(45px); transform-style: preserve-3d; }
 .showroom-building .showroom-emblem-spin { transform-style: preserve-3d; }
+.showroom-building .showroom-cuboid i { backface-visibility: hidden; }
 .showroom-building-walls { top: -50px; left: -75px; z-index: 1; }
 .showroom-building-roof {
   top: -58px;
@@ -601,6 +602,8 @@
   z-index: 5;
   transform: translate3d(65px, 0, 45px);
 }
+.showroom-building-sign,
+.showroom-building-pole { pointer-events: none; }
 
 .showroom-floating-label,
 .showroom-kind-label {
