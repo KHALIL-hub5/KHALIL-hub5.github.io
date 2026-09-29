@@ -4,6 +4,7 @@ import {
 import { lazy, Suspense, useState } from 'react'
 import { content } from '../data/content'
 import type { Project } from '../data/projects'
+import { ProjectPhonePreview } from './ProjectPhonePreview'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
 
@@ -31,6 +32,9 @@ export function Projects() {
         <Suspense fallback={<div className="showroom-loading" role="status">Loading project showroom…</div>}>
           <Showroom onProjectChange={setActiveProject} />
         </Suspense>
+      </Reveal>
+      <Reveal>
+        <ProjectPhonePreview />
       </Reveal>
       <div className="more-projects">
         <span>{content.projectsSection.moreProjectsLabel}</span>
