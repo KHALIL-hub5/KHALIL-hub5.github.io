@@ -150,6 +150,7 @@ export function ProjectPhonePreview() {
   return (
     <section
       className={`project-preview ${paused ? 'preview-paused' : ''} ${reducedMotion ? 'preview-reduced-motion' : ''}`}
+      id="full-stack-layers"
       aria-labelledby="project-preview-heading"
     >
       <header className="project-preview-header">
@@ -215,9 +216,12 @@ export function ProjectPhonePreview() {
                       type="button"
                       className={`scene-layer-button layer-${layer.id} ${liftedLayer === layer.id ? 'is-active' : ''}`}
                       onPointerEnter={() => setLiftedLayer(layer.id)}
-                      onPointerLeave={() => setLiftedLayer(null)}
+                      onPointerLeave={(event) => {
+                        if (event.pointerType !== 'touch') setLiftedLayer(null)
+                      }}
                       onFocus={() => setLiftedLayer(layer.id)}
                       onBlur={() => setLiftedLayer(null)}
+                      onClick={() => setLiftedLayer((current) => current === layer.id ? null : layer.id)}
                       aria-label={`${layer.name}: ${layer.technologies}; preview the ${layer.name.toLowerCase()} layer`}
                     >
                       <strong>{layer.name}</strong><span>{layer.technologies}</span>
