@@ -1,4 +1,5 @@
 import { portfolioProjects } from './projects'
+import { experience } from './experience'
 import type { ProjectCategory, ProjectRecord } from './projects'
 
 export type { ProjectCategory, ProjectIcon, RepositoryStatus } from './projects'
@@ -76,42 +77,7 @@ export const content = {
       items: ['OSPF', 'BGP', 'MPLS concepts', 'SSH', 'FTP', 'CTF challenges'],
     },
   ],
-  experience: [
-    {
-      role: 'Network Engineering Intern',
-      organization: 'Algérie Télécom',
-      location: 'Direction Générale, Algiers',
-      dates: '[dates]',
-      highlights: [
-        'Worked in a team of 2, supervised by Mr. Rayane Selmati.',
-        'Configured OSPFv2 on PE and core routers so all loopbacks were reachable.',
-        'Built eBGP sessions between loopbacks in different Autonomous Systems using ebgp-multihop, then analysed best-path selection.',
-        'Implemented BGP Anycast, advertising one prefix from several data centers via route-maps.',
-        'Simulated data-center and link failures on a test topology to validate automatic failover.',
-      ],
-    },
-    {
-      role: 'Software Development Intern',
-      organization: 'Sonatrach Béraki',
-      location: 'Béraki, Algeria',
-      dates: '[dates]',
-      highlights: [
-        'Built Gestion Formations, a training management system replacing an Excel-based process.',
-        'The system warns about scheduling conflicts and tracks requested and completed trainings.',
-      ],
-      repoUrl: 'https://github.com/KHALIL-hub5/gestion-formations',
-    },
-    {
-      role: 'Intern',
-      organization: 'Sonatrach Boumerdès — Laboratories Division',
-      location: 'Boumerdès, Algeria',
-      dates: '[dates]',
-      highlights: [],
-      project: 'Gestion Maintenance',
-      projectDescriptionStatus: 'coming-soon',
-      repoStatus: 'coming-soon',
-    },
-  ],
+  experience,
   experienceSection: {
     eyebrow: 'Where I’ve learned',
     title: 'Experience in practice.',
