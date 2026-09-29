@@ -1,22 +1,14 @@
-export type ProjectCategory = 'Web' | 'Mobile' | 'AI' | 'Networking'
-export type ProjectIcon = 'smartphone' | 'healthcare' | 'bot' | 'server' | 'network'
-export type RepositoryStatus = 'available' | 'private' | 'coming-soon'
+import { portfolioProjects } from './projects'
+import type { ProjectCategory, ProjectRecord } from './projects'
+
+export type { ProjectCategory, ProjectIcon, RepositoryStatus } from './projects'
 
 export interface SocialProfile {
   url?: string
   status: 'available' | 'coming-soon'
 }
 
-export interface Project {
-  title: string
-  description: string
-  technologies: string[]
-  categories: ProjectCategory[]
-  icon: ProjectIcon
-  repoUrl?: string
-  status: RepositoryStatus
-  featured?: boolean
-}
+export type Project = ProjectRecord
 
 export const content = {
   name: 'Khalil Djaidja',
@@ -143,56 +135,7 @@ export const content = {
     },
   },
   projectCategories: ['Web', 'Mobile', 'AI', 'Networking'] satisfies ProjectCategory[],
-  projects: [
-    {
-      title: 'KHdamli',
-      description:
-        'An employment marketplace connecting clients in Algeria with tradespeople, from plumbers to repair workers.',
-      technologies: ['React Native', 'TypeScript'],
-      categories: ['Mobile'],
-      icon: 'smartphone',
-      status: 'private',
-      featured: true,
-    },
-    {
-      title: 'MediLink-DZ',
-      description:
-        'A web platform bringing together Algerian healthcare information: medicines, practices, pharmacies, rentals, and patients.',
-      technologies: ['Web platform'],
-      categories: ['Web'],
-      icon: 'healthcare',
-      repoUrl: 'https://github.com/KHALIL-hub5/MediLink-DZ',
-      status: 'available',
-    },
-    {
-      title: 'Refactoring Swarm',
-      description:
-        'A team project building an AI agent with large language models.',
-      technologies: ['AI agents', 'LLMs'],
-      categories: ['AI'],
-      icon: 'bot',
-      repoUrl: 'https://github.com/Serbah298/Refactoring-Swarm-Equipe-101',
-      status: 'available',
-    },
-    {
-      title: 'ALIAS',
-      description:
-        'A campus management platform built with a microservices architecture; I led the risk analysis in a team of 9.',
-      technologies: ['Microservices', 'Risk analysis'],
-      categories: ['Web'],
-      icon: 'server',
-      status: 'coming-soon',
-    },
-    {
-      title: 'Networking Lab',
-      description:
-        'SSH and FTP configured and secured between Ubuntu virtual machines in VirtualBox.',
-      technologies: ['Ubuntu', 'SSH', 'FTP', 'VirtualBox'],
-      categories: ['Networking'],
-      icon: 'network',
-      status: 'coming-soon',
-    },
-  ] satisfies Project[],
+  projects: portfolioProjects,
   moreProjects: [
     { title: 'expense-tracker-react', href: 'https://github.com/KHALIL-hub5/expense-tracker-react' },
     { title: 'Alamin-Portfolio', href: 'https://github.com/KHALIL-hub5/Alamin-Portfolio' },

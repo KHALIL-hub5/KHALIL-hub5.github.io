@@ -26,15 +26,28 @@ export interface ShowroomTheme {
   grid: string
 }
 
-export interface Project {
-  id: 'kh' | 'ml' | 'un'
-  name: string
-  tagline: string
-  audience: string
-  stack: string
+export type ProjectCategory = 'Web' | 'Mobile' | 'AI' | 'Networking'
+export type ProjectIcon = 'smartphone' | 'healthcare' | 'bot' | 'server' | 'network'
+export type RepositoryStatus = 'available' | 'private' | 'coming-soon'
+
+export interface ProjectRecord {
+  id: 'kh' | 'ml' | 'un' | 'swarm' | 'networking'
+  title: string
+  description: string
+  technologies: string[]
+  categories: ProjectCategory[]
+  icon: ProjectIcon
+  status: RepositoryStatus
   repoUrl?: string
-  repoStatus: 'public' | 'private' | 'soon'
-  palette: {
+  liveUrl?: string
+  image?: string
+  featured?: boolean
+  name?: string
+  tagline?: string
+  audience?: string
+  stack?: string
+  repoStatus?: 'public' | 'private' | 'soon'
+  palette?: {
     primary: string
     secondary: string
     surface: string
@@ -42,11 +55,43 @@ export interface Project {
     dark: ShowroomTheme
     light: ShowroomTheme
   }
+  emblem?: 'house' | 'crescent' | 'cap'
+  labels?: string[]
+  web?: Screen[]
+  mobile?: Screen[]
+  edge?: string
+}
+
+export type Project = ProjectRecord & {
+  id: 'kh' | 'ml' | 'un'
+  name: string
+  tagline: string
+  audience: string
+  stack: string
+  repoStatus: 'public' | 'private' | 'soon'
+  palette: NonNullable<ProjectRecord['palette']>
   emblem: 'house' | 'crescent' | 'cap'
   labels: string[]
   web: Screen[]
   mobile: Screen[]
   edge: string
+}
+
+function isShowroomProject(project: ProjectRecord): project is Project {
+  return (
+    (project.id === 'kh' || project.id === 'ml' || project.id === 'un') &&
+    project.name !== undefined &&
+    project.tagline !== undefined &&
+    project.audience !== undefined &&
+    project.stack !== undefined &&
+    project.repoStatus !== undefined &&
+    project.palette !== undefined &&
+    project.emblem !== undefined &&
+    project.labels !== undefined &&
+    project.web !== undefined &&
+    project.mobile !== undefined &&
+    project.edge !== undefined
+  )
 }
 
 const khWeb: Screen[] = [
@@ -55,9 +100,16 @@ const khWeb: Screen[] = [
   { name: 'Requests', concept: true, component: RequestsConcept, width: 1000, height: 625 },
 ]
 
-export const projects: Project[] = [
+const portfolioProjects: ProjectRecord[] = [
   {
     id: 'kh',
+    title: 'KHdamli',
+    description: 'An employment marketplace connecting clients in Algeria with tradespeople, from plumbers to repair workers.',
+    technologies: ['React Native', 'TypeScript'],
+    categories: ['Mobile'],
+    icon: 'smartphone',
+    status: 'private',
+    featured: true,
     name: 'KHdamli',
     tagline: 'An employment marketplace connecting clients in Algeria with tradespeople.',
     audience: 'Clients looking for a plumber, builder or repair worker, and the tradespeople who take the jobs.',
@@ -101,6 +153,12 @@ export const projects: Project[] = [
   },
   {
     id: 'ml',
+    title: 'MediLink-DZ',
+    description: 'A web platform bringing together Algerian healthcare information: medicines, practices, pharmacies, rentals, and patients.',
+    technologies: ['Web platform'],
+    categories: ['Web'],
+    icon: 'healthcare',
+    status: 'available',
     name: 'MediLink DZ',
     tagline: 'A web platform bringing together Algerian healthcare information.',
     audience: 'Patients, doctors, pharmacists and administrators, all in one healthcare platform for Algeria.',
@@ -145,6 +203,12 @@ export const projects: Project[] = [
   },
   {
     id: 'un',
+    title: 'ALIAS',
+    description: 'A campus management platform built with a microservices architecture; I led the risk analysis in a team of 9.',
+    technologies: ['Microservices', 'Risk analysis'],
+    categories: ['Web'],
+    icon: 'server',
+    status: 'coming-soon',
     name: 'ALIAS · UNIVENT',
     tagline: 'A campus management platform built with a microservices architecture.',
     audience: 'Students, event organizers and the university administration, part of the ALIAS campus platform.',
@@ -187,3 +251,6 @@ export const projects: Project[] = [
     edge: '#1f9a62',
   },
 ]
+
+export { portfolioProjects }
+export const projects: Project[] = portfolioProjects.filter(isShowroomProject)

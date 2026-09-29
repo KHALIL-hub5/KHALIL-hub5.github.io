@@ -74,7 +74,7 @@ export function Showroom({ onProjectChange }: ShowroomProps) {
       data-mobile-view={mobileView}
     >
       <header className="showroom-heading">
-        <h3>Three projects, three worlds</h3>
+        <h3>Product showroom</h3>
         <p>
           Each project keeps its own identity, colors and interface. Choose a project, browse its web and mobile
           screens, or bring a side phone forward. KHdamli&apos;s web view is a concept; the other previews use the
