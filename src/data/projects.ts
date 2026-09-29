@@ -33,6 +33,8 @@ export type RepositoryStatus = 'available' | 'private' | 'coming-soon'
 export interface ProjectRecord {
   id: 'kh' | 'ml' | 'un' | 'swarm' | 'networking'
   title: string
+  tagline: string
+  summary: string
   description: string
   technologies: string[]
   categories: ProjectCategory[]
@@ -43,7 +45,6 @@ export interface ProjectRecord {
   image?: string
   featured?: boolean
   name?: string
-  tagline?: string
   audience?: string
   stack?: string
   repoStatus?: 'public' | 'private' | 'soon'
@@ -105,6 +106,7 @@ const portfolioProjects: ProjectRecord[] = [
     id: 'kh',
     title: 'KHdamli',
     description: 'An employment marketplace connecting clients in Algeria with tradespeople, from plumbers to repair workers.',
+    summary: 'An employment marketplace connecting clients in Algeria with tradespeople.',
     technologies: ['React Native', 'TypeScript'],
     categories: ['Mobile'],
     icon: 'smartphone',
@@ -155,6 +157,7 @@ const portfolioProjects: ProjectRecord[] = [
     id: 'ml',
     title: 'MediLink-DZ',
     description: 'A web platform bringing together Algerian healthcare information: medicines, practices, pharmacies, rentals, and patients.',
+    summary: 'A web platform bringing together Algerian healthcare information.',
     technologies: ['Web platform'],
     categories: ['Web'],
     icon: 'healthcare',
@@ -205,6 +208,7 @@ const portfolioProjects: ProjectRecord[] = [
     id: 'un',
     title: 'ALIAS',
     description: 'A campus management platform built with a microservices architecture; I led the risk analysis in a team of 9.',
+    summary: 'A campus management platform built with a microservices architecture.',
     technologies: ['Microservices', 'Risk analysis'],
     categories: ['Web'],
     icon: 'server',
@@ -253,6 +257,8 @@ const portfolioProjects: ProjectRecord[] = [
   {
     id: 'swarm',
     title: 'Refactoring Swarm',
+    tagline: 'AI agents collaborate on software refactoring tasks.',
+    summary: 'A team project building an AI agent with large language models.',
     description: 'A team project building an AI agent with large language models.',
     technologies: ['AI agents', 'LLMs'],
     categories: ['AI'],
@@ -263,6 +269,8 @@ const portfolioProjects: ProjectRecord[] = [
   {
     id: 'networking',
     title: 'Networking Lab',
+    tagline: 'Secured Ubuntu networking between virtual machines.',
+    summary: 'SSH and FTP configured and secured between Ubuntu virtual machines.',
     description: 'SSH and FTP configured and secured between Ubuntu virtual machines in VirtualBox.',
     technologies: ['Ubuntu', 'SSH', 'FTP', 'VirtualBox'],
     categories: ['Networking'],
