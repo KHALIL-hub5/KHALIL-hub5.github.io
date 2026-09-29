@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { content, type ProjectCategory, type ProjectIcon } from '../data/content'
+import { ProjectPhonePreview } from './ProjectPhonePreview'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
 
@@ -48,6 +49,9 @@ export function Projects() {
           title={content.projectsSection.title}
           description={content.projectsSection.description}
         />
+      </Reveal>
+      <Reveal>
+        <ProjectPhonePreview />
       </Reveal>
       <div className="project-filters" role="group" aria-label={content.projectsSection.filterGroupLabel}>
         {filters.map((filter) => (

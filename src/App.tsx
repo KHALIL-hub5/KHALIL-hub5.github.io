@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { About } from './components/About'
+import { Background3D } from './components/background3d/Background3D'
 import { Contact } from './components/Contact'
 import { Experience } from './components/Experience'
 import { Footer } from './components/Footer'
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <>
+      <Background3D />
       <a className="skip-link" href="#main">Skip to content</a>
       <Header isLight={isLight} onThemeToggle={toggleTheme} />
       <main id="main">

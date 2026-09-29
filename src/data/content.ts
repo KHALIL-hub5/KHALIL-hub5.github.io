@@ -199,8 +199,8 @@ export const content = {
     { title: 'Poject1', href: 'https://github.com/KHALIL-hub5/Poject1' },
   ],
   contact: {
-    email: '[email]',
-    emailHref: 'mailto:[email]',
+    email: 'khalildjaidja510@gmail.com',
+    emailHref: 'mailto:khalildjaidja510@gmail.com',
     github: 'https://github.com/KHALIL-hub5',
     linkedin: { url: undefined, status: 'coming-soon' } satisfies SocialProfile,
     upwork: { url: undefined, status: 'coming-soon' } satisfies SocialProfile,
