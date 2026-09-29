@@ -1,5 +1,6 @@
 import { ArrowUpRight, BriefcaseBusiness } from 'lucide-react'
 import { content } from '../data/content'
+import { getExperienceStatus } from '../data/experience'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
 
@@ -14,6 +15,7 @@ export function Experience() {
           description={content.experienceSection.description}
         />
       </Reveal>
+      <p className="experience-overlap-note">These periods overlap; each card shows its own independent date range.</p>
       <div className="timeline">
         {content.experience.map((item, index) => (
           <Reveal key={`${item.organization}-${item.role}`} className="timeline-item">
@@ -21,12 +23,21 @@ export function Experience() {
             <div className="timeline-card">
               <div className="timeline-top">
                 <div>
-                  <span className="timeline-date">{item.dates}</span>
+                  <span className="timeline-date" aria-label={item.accessibleDates}>{item.dates}</span>
                   <h3>{item.role}</h3>
                   <p className="timeline-company">{item.organization} <span>·</span> {item.location}</p>
                 </div>
-                <span className="timeline-count">0{index + 1}</span>
+                <div className="timeline-meta">
+                  <span className="timeline-count">0{index + 1}</span>
+                  <span
+                    className={`timeline-status status-${getExperienceStatus(item.startDate, item.endDate)}`}
+                    aria-label={`${item.accessibleDates}; ${getExperienceStatus(item.startDate, item.endDate)}`}
+                  >
+                    {getExperienceStatus(item.startDate, item.endDate)}
+                  </span>
+                </div>
               </div>
+              <p className="timeline-duration">{item.duration}</p>
               <ul>
                 {item.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
               </ul>

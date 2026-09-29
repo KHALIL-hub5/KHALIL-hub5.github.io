@@ -7,6 +7,8 @@ export interface ExperienceRecord {
   startDate: string
   endDate: string
   dates: string
+  accessibleDates: string
+  duration: string
   highlights: string[]
   repoUrl?: string
   project?: string
@@ -27,6 +29,23 @@ export function formatExperienceRange(startDate: string, endDate: string) {
   const start = formatExperienceDate(startDate)
   const end = formatExperienceDate(endDate)
   return `${start.replace(` ${start.slice(-4)}`, '')} - ${end}`
+}
+
+export function formatExperienceAccessibleRange(startDate: string, endDate: string) {
+  const format = (isoDate: string) => new Intl.DateTimeFormat('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(`${isoDate}T00:00:00Z`))
+  return `${format(startDate)} to ${format(endDate)}`
+}
+
+export function formatExperienceDuration(startDate: string, endDate: string) {
+  const start = Date.parse(`${startDate}T00:00:00Z`)
+  const end = Date.parse(`${endDate}T00:00:00Z`)
+  const days = Math.round((end - start) / 86400000) + 1
+  return days >= 28 && days <= 31 ? 'about 1 month' : `${days} days`
 }
 
 export function getExperienceStatus(startDate: string, endDate: string, today = new Date().toISOString().slice(0, 10)): ExperienceStatus {
@@ -78,4 +97,6 @@ const experienceEntries = [
 export const experience = experienceEntries.map((entry): ExperienceRecord => ({
   ...entry,
   dates: formatExperienceRange(entry.startDate, entry.endDate),
+  accessibleDates: formatExperienceAccessibleRange(entry.startDate, entry.endDate),
+  duration: formatExperienceDuration(entry.startDate, entry.endDate),
 }))
