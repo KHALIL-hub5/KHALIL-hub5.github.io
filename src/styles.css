@@ -218,7 +218,8 @@ main, .site-footer { position: relative; z-index: 1; }
 .timeline-item:not(:last-child)::after { position: absolute; top: 44px; bottom: -19px; left: 20px; width: 1px; background: var(--line-strong); content: ''; }
 .timeline-marker { position: relative; z-index: 1; display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid rgba(121, 228, 208, 0.25); border-radius: 50%; background: var(--bg); color: var(--accent); }
 .timeline-card { padding: 25px 28px; border: 1px solid var(--line); border-radius: 7px; background: var(--bg-raised); }
-.timeline-top { display: flex; justify-content: space-between; gap: 14px; }
+.timeline-top { display: flex; min-width: 0; justify-content: space-between; gap: 14px; }
+.timeline-top > div:first-child { min-width: 0; }
 .timeline-date { color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: 0.6px; }
 .timeline-top h3 { margin: 8px 0 0; font: 500 20px 'Space Grotesk', sans-serif; letter-spacing: -0.5px; }
 .timeline-company { margin: 7px 0 0; color: var(--muted); font-size: 12px; }
@@ -474,6 +475,7 @@ main, .site-footer { position: relative; z-index: 1; }
   .timeline-marker svg { width: 14px; }
   .timeline-card { padding: 19px 16px; }
   .timeline-top h3 { font-size: 17px; }
+  .timeline-date { display: block; overflow-wrap: anywhere; line-height: 1.45; }
   .timeline-company { font-size: 11px; line-height: 1.6; }
   .timeline-meta { gap: 5px; }
   .timeline-status { font-size: 9px; }

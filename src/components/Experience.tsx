@@ -16,11 +16,11 @@ export function Experience() {
         />
       </Reveal>
       <p className="experience-overlap-note">These periods overlap; each card shows its own independent date range.</p>
-      <div className="timeline">
+      <div className="timeline" role="list" aria-label="Experience periods">
         {content.experience.map((item, index) => (
-          <Reveal key={`${item.organization}-${item.role}`} className="timeline-item">
+          <Reveal key={`${item.organization}-${item.role}`} className="timeline-item" role="listitem">
             <div className="timeline-marker"><BriefcaseBusiness size={17} /></div>
-            <div className="timeline-card">
+            <div className="timeline-card" aria-label={`${item.organization}, ${item.accessibleDates}`}>
               <div className="timeline-top">
                 <div>
                   <span className="timeline-date" aria-label={item.accessibleDates}>{item.dates}</span>
