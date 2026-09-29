@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type HTMLAttributes, type ReactNode } from 'react'
 
 interface RevealProps {
   children: ReactNode
   className?: string
+  role?: HTMLAttributes<HTMLDivElement>['role']
 }
 
-export function Reveal({ children, className = '' }: RevealProps) {
+export function Reveal({ children, className = '', role }: RevealProps) {
   const elementRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
   const [animationEnabled, setAnimationEnabled] = useState(false)
@@ -51,6 +52,7 @@ export function Reveal({ children, className = '' }: RevealProps) {
   return (
     <div
       ref={elementRef}
+      role={role}
       className={`reveal ${animationEnabled ? 'reveal-ready' : ''} ${visible ? 'is-visible' : ''} ${className}`}
     >
       {children}

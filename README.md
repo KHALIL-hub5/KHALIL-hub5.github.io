@@ -54,7 +54,7 @@ The Vite base path is `/`, matching this `KHALIL-hub5.github.io` repository.
 
 - Replace the visible `[email]` placeholder in `src/data/content.ts` with a real contact address.
 - Add the LinkedIn and Upwork profile URLs in `src/data/content.ts`.
-- Replace `[dates]` for each experience entry with the correct dates.
+- Update experience dates in [`src/data/experience.ts`](./src/data/experience.ts) when a placement changes.
 - Add the Gestion Maintenance short description.
 - Add the Gestion Maintenance repository URL in place of `[url]`.
 - Add the ALIAS and Networking Lab repository URLs in place of `[url]`.
