@@ -250,6 +250,25 @@ const portfolioProjects: ProjectRecord[] = [
     mobile: shots.un_mobile,
     edge: '#1f9a62',
   },
+  {
+    id: 'swarm',
+    title: 'Refactoring Swarm',
+    description: 'A team project building an AI agent with large language models.',
+    technologies: ['AI agents', 'LLMs'],
+    categories: ['AI'],
+    icon: 'bot',
+    repoUrl: 'https://github.com/Serbah298/Refactoring-Swarm-Equipe-101',
+    status: 'available',
+  },
+  {
+    id: 'networking',
+    title: 'Networking Lab',
+    description: 'SSH and FTP configured and secured between Ubuntu virtual machines in VirtualBox.',
+    technologies: ['Ubuntu', 'SSH', 'FTP', 'VirtualBox'],
+    categories: ['Networking'],
+    icon: 'network',
+    status: 'coming-soon',
+  },
 ]
 
 export { portfolioProjects }

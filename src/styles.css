@@ -613,8 +613,10 @@ main, .site-footer { position: relative; z-index: 1; }
 .duo-role-client[aria-pressed="true"], .duo-role-worker[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--phone-screen), 0 0 0 3px var(--blue); }
 
 .phone-stage { min-height: 438px; perspective: 950px; }
-.phone-screen-tabs { position: absolute; z-index: 3; top: 12px; right: 12px; left: 12px; justify-content: center; margin: 0; }
-.phone-screen-tab { min-height: 31px; padding-inline: 9px; font-size: 9px; }
+.phone-screen-tabs { position: absolute; z-index: 3; top: 12px; right: 12px; left: 12px; flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; margin: 0; }
+.phone-screen-tab { flex: 0 0 auto; min-height: 31px; padding-inline: 9px; font-size: 9px; white-space: nowrap; }
+.phone-secondary-screen-tabs { top: 50px; }
+.phone-stage .preview-phone { margin-top: 48px; }
 .preview-phone { width: min(100%, 230px); min-height: 340px; margin-top: 25px; }
 .preview-phone-screen { min-height: 324px; }
 .preview-paused *, .preview-paused *::before, .preview-paused *::after { animation-play-state: paused !important; }
@@ -653,5 +655,6 @@ main, .site-footer { position: relative; z-index: 1; }
   .duo-phone { width: 27%; }
   .phone-stage { min-height: 415px; }
   .phone-screen-tabs { top: 10px; right: 6px; left: 6px; gap: 5px; }
+  .phone-secondary-screen-tabs { top: 48px; }
   .phone-screen-tab { min-height: 31px; padding-inline: 7px; font-size: 8px; }
 }

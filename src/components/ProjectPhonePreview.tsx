@@ -1,5 +1,6 @@
-import { ArrowLeft, ArrowRight, Check, Pause, Play, Smartphone } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Pause, Play, Smartphone } from 'lucide-react'
 import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from 'react'
+import { portfolioProjects } from '../data/projects'
 
 const SCENES = [
   { id: 0, label: 'The full-stack layers', title: 'The full-stack layers' },
@@ -7,17 +8,11 @@ const SCENES = [
   { id: 2, label: 'Interactive project phone', title: 'Interactive project phone' },
 ] as const
 
-const SCREENS = [
-  { id: 'role', label: 'KHdamli: role' },
-  { id: 'profile', label: 'KHdamli: worker' },
-  { id: 'medilink', label: 'MediLink-DZ' },
-] as const
-
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 const PAYMENT_METHODS = ['Cash', 'Baridimob', 'CCP']
 const HEALTHCARE_CATEGORIES = ['Medicines', 'Pharmacies', 'Practices', 'Rentals']
 
-type ScreenId = (typeof SCREENS)[number]['id']
+type ScreenId = 'role' | 'profile' | 'medilink'
 type Role = 'Client' | 'Worker'
 type LayerId = 'ui' | 'api' | 'db'
 
@@ -35,6 +30,7 @@ const initialReducedMotion = () =>
 export function ProjectPhonePreview() {
   const [activeScene, setActiveScene] = useState(0)
   const [screen, setScreen] = useState<ScreenId>('role')
+  const [phoneProjectId, setPhoneProjectId] = useState(portfolioProjects[0].id)
   const [role, setRole] = useState<Role | null>(null)
   const [category, setCategory] = useState('Plumbing')
   const [healthcareCategory, setHealthcareCategory] = useState('Medicines')
@@ -50,6 +46,7 @@ export function ProjectPhonePreview() {
   const stackRotatorRef = useRef<HTMLDivElement | null>(null)
   const stackDrag = useRef<{ pointerId: number; x: number; y: number } | null>(null)
   const stackRotation = useRef({ x: 0, y: 0 })
+  const phoneProject = portfolioProjects.find((project) => project.id === phoneProjectId) ?? portfolioProjects[0]
 
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -138,6 +135,12 @@ export function ProjectPhonePreview() {
     setRole('Worker')
     setSaved(false)
     setScreen('profile')
+  }
+
+  function selectPhoneProject(projectId: typeof phoneProjectId) {
+    setPhoneProjectId(projectId)
+    setScreen(projectId === 'ml' ? 'medilink' : 'role')
+    setSaved(false)
   }
 
   const tiltStyle = {
@@ -369,32 +372,48 @@ export function ProjectPhonePreview() {
               onPointerLeave={() => setTilt({ x: 0, y: 0 })}
               style={tiltStyle}
             >
-              <div className="project-screen-tabs phone-screen-tabs" role="group" aria-label="Choose a phone preview screen">
-                {SCREENS.map((item) => (
+              <div className="project-screen-tabs phone-screen-tabs" role="group" aria-label="Choose a project phone preview">
+                {portfolioProjects.map((project) => (
                   <button
-                    key={item.id}
+                    key={project.id}
                     className="project-screen-tab"
                     type="button"
-                    aria-pressed={screen === item.id}
-                    onClick={() => {
-                      if (item.id === 'profile') setRole('Worker')
-                      setScreen(item.id)
-                      setSaved(false)
-                    }}
+                    aria-pressed={phoneProjectId === project.id}
+                    onClick={() => selectPhoneProject(project.id)}
                   >
-                    {item.label}
+                    {project.title}
                   </button>
                 ))}
               </div>
+              {phoneProjectId === 'kh' && (
+                <div className="project-screen-tabs phone-screen-tabs phone-secondary-screen-tabs" role="group" aria-label="Choose a KHdamli screen">
+                  <button
+                    className="project-screen-tab"
+                    type="button"
+                    aria-pressed={screen === 'role'}
+                    onClick={() => setScreen('role')}
+                  >
+                    Role
+                  </button>
+                  <button
+                    className="project-screen-tab"
+                    type="button"
+                    aria-pressed={screen === 'profile'}
+                    onClick={openWorkerProfile}
+                  >
+                    Worker profile
+                  </button>
+                </div>
+              )}
               <div className="preview-phone" style={{ transform: `rotateX(var(--tilt-x)) rotateY(var(--tilt-y))` }}>
                 <div className="preview-phone-glow" aria-hidden="true" />
                 <div className="preview-phone-screen">
                   <div className="preview-phone-status" aria-hidden="true">
                     <span>9:41</span><span><i /><i /><i /></span>
                   </div>
-                  <div className="preview-phone-brand"><Smartphone size={15} /> {screen === 'medilink' ? 'MediLink-DZ' : 'KHdamli'}</div>
+                  <div className="preview-phone-brand"><Smartphone size={15} /> {phoneProject.title}</div>
 
-                  {screen === 'role' && (
+                  {phoneProjectId === 'kh' && screen === 'role' && (
                     <div className="phone-screen-content">
                       <h4>Choose your role</h4>
                       <p>Tell us how you want to use KHdamli.</p>
@@ -421,7 +440,7 @@ export function ProjectPhonePreview() {
                     </div>
                   )}
 
-                  {screen === 'profile' && (
+                  {phoneProjectId === 'kh' && screen === 'profile' && (
                     <div className="phone-screen-content">
                       <button className="phone-back" type="button" onClick={() => setScreen('role')}>
                         <ArrowLeft size={13} /> Change role{role ? ` · ${role}` : ''}
@@ -474,7 +493,7 @@ export function ProjectPhonePreview() {
                     </div>
                   )}
 
-                  {screen === 'medilink' && (
+                  {phoneProjectId === 'ml' && screen === 'medilink' && (
                     <div className="phone-screen-content">
                       <h4>Healthcare in Algeria</h4>
                       <p>Find what you need in one place.</p>
@@ -493,6 +512,25 @@ export function ProjectPhonePreview() {
                         ))}
                       </div>
                       <p className="phone-field-hint" aria-live="polite">Selected: {healthcareCategory}</p>
+                    </div>
+                  )}
+
+                  {phoneProjectId !== 'kh' && phoneProjectId !== 'ml' && (
+                    <div className="phone-screen-content">
+                      <h4>{phoneProject.title}</h4>
+                      <p>{phoneProject.description}</p>
+                      <div className="phone-chips">
+                        {phoneProject.technologies.map((technology) => <span key={technology}>{technology}</span>)}
+                      </div>
+                      {phoneProject.repoUrl ? (
+                        <a className="phone-primary-action" href={phoneProject.repoUrl} target="_blank" rel="noreferrer">
+                          View repository <ArrowUpRight size={14} />
+                        </a>
+                      ) : (
+                        <span className="phone-field-hint">
+                          {phoneProject.status === 'private' ? 'Code on request' : 'Repository coming soon'}
+                        </span>
+                      )}
                     </div>
                   )}
                 </div>
