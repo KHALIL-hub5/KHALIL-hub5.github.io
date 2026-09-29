@@ -1,3 +1,6 @@
 node_modules/
 dist/
 *.tsbuildinfo
+
+chat.json
+HANDOFF_STATE.txt
