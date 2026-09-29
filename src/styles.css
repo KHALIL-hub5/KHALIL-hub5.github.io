@@ -254,7 +254,7 @@ main, .site-footer { position: relative; z-index: 1; }
 .project-title-row { display: flex; align-items: start; justify-content: space-between; gap: 8px; }
 .project-title-row h3 { margin: 0; font: 500 18px 'Space Grotesk', sans-serif; }
 .project-category { padding: 5px 9px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--category-bg); color: var(--category-text); font-size: 12px; font-weight: 600; line-height: 1.25; }
-.project-card-content > p { flex: 1; margin: 12px 0 16px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+.project-card-content > p { margin: 12px 0 16px; color: var(--muted); font-size: 13px; line-height: 1.7; overflow-wrap: anywhere; }
 .project-tags { gap: 8px; }
 .project-card-footer { display: flex; min-height: 44px; align-items: end; margin-top: auto; padding-top: 18px; }
 .project-link { display: inline-flex; min-height: 38px; align-items: center; gap: 8px; padding: 0 11px; border: 1px solid var(--line-strong); border-radius: 4px; color: var(--accent); font-size: 12px; font-weight: 700; transition: border-color 160ms ease, background-color 160ms ease; }
