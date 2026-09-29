@@ -22,9 +22,9 @@ Run the configured lint checks with `npm run lint`.
 
 ## Edit portfolio content
 
-All portfolio copy and editable project, experience, skill, contact, and metadata content lives in [`src/data/content.ts`](./src/data/content.ts). Update that file to change the text, tags, project links, and social links without editing the components.
+Portfolio copy, experience, skill, contact, and metadata content lives in [`src/data/content.ts`](./src/data/content.ts). The project catalog has one source of truth in [`src/data/projects.ts`](./src/data/projects.ts); the project cards, showroom, and interactive phone preview all read from that typed data.
 
-For a public project repository, set `repoUrl` and `status: 'available'`. For a private repository or one that is not ready to share, set `status: 'private'` or `status: 'coming-soon'`; those states render clear badges instead of placeholder URLs. Add LinkedIn and Upwork URLs to their profile objects when available.
+To add a project, add one entry to the `portfolioProjects` array in `src/data/projects.ts` with its title, description, technologies, categories, icon, and repository status. Add `repoUrl`, `liveUrl`, or `image` only when you have real values. The showroom is generated from the same records that contain its scene data. For a public repository, set `repoUrl` and `status: 'available'`; private and not-yet-ready repositories render clear badges rather than placeholder URLs. Add LinkedIn and Upwork URLs to their profile objects when available.
 
 The hero portrait is stored at `public/khalil-profile.png`. Replace that file to use a different image, and update `heroImage.alt` in `src/data/content.ts` to describe it.
 
@@ -36,7 +36,7 @@ The color theme is switched with the sun/moon button and saved in browser local 
 
 The Projects section lazy-loads a CSS 3D showroom for KHdamli, MediLink DZ, and ALIAS · UNIVENT. Each product has its own scoped palette, screenshot pickers, project details, and repository status. The desktop stage pairs a browser-screen deck with a phone coverflow; on narrow screens use the Web view/Mobile view buttons to browse the same screens as a compact carousel. The pause control stops motion, and reduced-motion preferences disable it automatically.
 
-Project copy, palettes, labels, emblems, repository information, and screen lists are typed in [`src/data/projects.ts`](./src/data/projects.ts). To add or update a screenshot, update the `SHOTS` data in [`references/Project showroom – 3D preview.html`](./references/Project%20showroom%20%E2%80%93%203D%20preview.html) and run:
+Project copy, palettes, labels, emblems, repository information, and screen lists are typed alongside each project in [`src/data/projects.ts`](./src/data/projects.ts). A project can appear in the cards and phone preview without showroom scene data; add its showroom fields and screens only when those previews are available. To add or update a screenshot, update the `SHOTS` data in [`references/Project showroom – 3D preview.html`](./references/Project%20showroom%20%E2%80%93%203D%20preview.html) and run:
 
 ```sh
 npm run extract:showroom
@@ -54,7 +54,7 @@ The Vite base path is `/`, matching this `KHALIL-hub5.github.io` repository.
 
 - Replace the visible `[email]` placeholder in `src/data/content.ts` with a real contact address.
 - Add the LinkedIn and Upwork profile URLs in `src/data/content.ts`.
-- Replace `[dates]` for each experience entry with the correct dates.
+- Update experience dates in [`src/data/experience.ts`](./src/data/experience.ts) when a placement changes.
 - Add the Gestion Maintenance short description.
 - Add the Gestion Maintenance repository URL in place of `[url]`.
 - Add the ALIAS and Networking Lab repository URLs in place of `[url]`.

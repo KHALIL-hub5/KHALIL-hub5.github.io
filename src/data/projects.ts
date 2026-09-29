@@ -26,15 +26,29 @@ export interface ShowroomTheme {
   grid: string
 }
 
-export interface Project {
-  id: 'kh' | 'ml' | 'un'
-  name: string
+export type ProjectCategory = 'Web' | 'Mobile' | 'AI' | 'Networking'
+export type ProjectIcon = 'smartphone' | 'healthcare' | 'bot' | 'server' | 'network'
+export type RepositoryStatus = 'available' | 'private' | 'coming-soon'
+
+export interface ProjectRecord {
+  id: 'kh' | 'ml' | 'un' | 'swarm' | 'networking'
+  title: string
   tagline: string
-  audience: string
-  stack: string
+  summary: string
+  description: string
+  technologies: string[]
+  categories: ProjectCategory[]
+  icon: ProjectIcon
+  status: RepositoryStatus
   repoUrl?: string
-  repoStatus: 'public' | 'private' | 'soon'
-  palette: {
+  liveUrl?: string
+  image?: string
+  featured?: boolean
+  name?: string
+  audience?: string
+  stack?: string
+  repoStatus?: 'public' | 'private' | 'soon'
+  palette?: {
     primary: string
     secondary: string
     surface: string
@@ -42,11 +56,43 @@ export interface Project {
     dark: ShowroomTheme
     light: ShowroomTheme
   }
+  emblem?: 'house' | 'crescent' | 'cap'
+  labels?: string[]
+  web?: Screen[]
+  mobile?: Screen[]
+  edge?: string
+}
+
+export type Project = ProjectRecord & {
+  id: 'kh' | 'ml' | 'un'
+  name: string
+  tagline: string
+  audience: string
+  stack: string
+  repoStatus: 'public' | 'private' | 'soon'
+  palette: NonNullable<ProjectRecord['palette']>
   emblem: 'house' | 'crescent' | 'cap'
   labels: string[]
   web: Screen[]
   mobile: Screen[]
   edge: string
+}
+
+function isShowroomProject(project: ProjectRecord): project is Project {
+  return (
+    (project.id === 'kh' || project.id === 'ml' || project.id === 'un') &&
+    project.name !== undefined &&
+    project.tagline !== undefined &&
+    project.audience !== undefined &&
+    project.stack !== undefined &&
+    project.repoStatus !== undefined &&
+    project.palette !== undefined &&
+    project.emblem !== undefined &&
+    project.labels !== undefined &&
+    project.web !== undefined &&
+    project.mobile !== undefined &&
+    project.edge !== undefined
+  )
 }
 
 const khWeb: Screen[] = [
@@ -55,11 +101,19 @@ const khWeb: Screen[] = [
   { name: 'Requests', concept: true, component: RequestsConcept, width: 1000, height: 625 },
 ]
 
-export const projects: Project[] = [
+const portfolioProjects: ProjectRecord[] = [
   {
     id: 'kh',
+    title: 'KHdamli',
+    description: 'Clients post a job and get matched with plumbers, electricians, and repair workers nearby. Built as a cross-platform app with React Native and TypeScript for everyday work.',
+    summary: 'A mobile marketplace that connects clients in Algeria with local tradespeople for home services.',
+    technologies: ['React Native', 'TypeScript'],
+    categories: ['Mobile'],
+    icon: 'smartphone',
+    status: 'private',
+    featured: true,
     name: 'KHdamli',
-    tagline: 'An employment marketplace connecting clients in Algeria with tradespeople.',
+    tagline: 'Find trusted tradespeople across Algeria',
     audience: 'Clients looking for a plumber, builder or repair worker, and the tradespeople who take the jobs.',
     stack: 'React Native, TypeScript',
     repoStatus: 'private',
@@ -101,8 +155,15 @@ export const projects: Project[] = [
   },
   {
     id: 'ml',
+    title: 'MediLink-DZ',
+    description: 'Patients book care, doctors manage their consultations, and pharmacies and clinics stay connected in one place. I designed it with UML use-case, state, and ER diagrams.',
+    summary: 'A platform linking patients, doctors, pharmacies, and clinics across Algeria in one place.',
+    technologies: ['Web platform'],
+    categories: ['Web'],
+    icon: 'healthcare',
+    status: 'available',
     name: 'MediLink DZ',
-    tagline: 'A web platform bringing together Algerian healthcare information.',
+    tagline: 'One health platform for all of Algeria',
     audience: 'Patients, doctors, pharmacists and administrators, all in one healthcare platform for Algeria.',
     stack: 'Web application',
     repoUrl: 'https://github.com/KHALIL-hub5/MediLink-DZ',
@@ -145,8 +206,18 @@ export const projects: Project[] = [
   },
   {
     id: 'un',
+    title: 'ALIAS',
+    // TODO: review copy
+    description: 'The platform brings students, event organizers, and university administration into one campus management workflow for events. I led the risk analysis for a team project using a microservices architecture.',
+    // TODO: review copy
+    summary: 'A campus management platform connecting students, event organizers, and university administration across campus.',
+    technologies: ['Microservices', 'Risk analysis'],
+    categories: ['Web'],
+    icon: 'server',
+    status: 'coming-soon',
     name: 'ALIAS · UNIVENT',
-    tagline: 'A campus management platform built with a microservices architecture.',
+    // TODO: review copy
+    tagline: 'Campus events for students and organizers',
     audience: 'Students, event organizers and the university administration, part of the ALIAS campus platform.',
     stack: 'Microservices architecture',
     repoStatus: 'soon',
@@ -186,4 +257,36 @@ export const projects: Project[] = [
     mobile: shots.un_mobile,
     edge: '#1f9a62',
   },
+  {
+    id: 'swarm',
+    title: 'Refactoring Swarm',
+    // TODO: review copy
+    tagline: 'Collaborative AI agents for language-model refactoring',
+    // TODO: review copy
+    summary: 'A team-built AI project exploring agents that assist software refactoring with large language models.',
+    // TODO: review copy
+    description: 'Refactoring Swarm is a team project focused on building an AI agent for software refactoring. It explores how large language models can support automated code improvement.',
+    technologies: ['AI agents', 'LLMs'],
+    categories: ['AI'],
+    icon: 'bot',
+    repoUrl: 'https://github.com/Serbah298/Refactoring-Swarm-Equipe-101',
+    status: 'available',
+  },
+  {
+    id: 'networking',
+    title: 'Networking Lab',
+    // TODO: review copy
+    tagline: 'Secured SSH and FTP between Ubuntu virtual machines',
+    // TODO: review copy
+    summary: 'A networking lab securing SSH and FTP connections between Ubuntu virtual machines in VirtualBox.',
+    // TODO: review copy
+    description: 'I configured SSH and FTP between Ubuntu virtual machines in VirtualBox, then secured the connections. The project demonstrates hands-on networking practice with Linux-based virtual infrastructure.',
+    technologies: ['Ubuntu', 'SSH', 'FTP', 'VirtualBox'],
+    categories: ['Networking'],
+    icon: 'network',
+    status: 'coming-soon',
+  },
 ]
+
+export { portfolioProjects }
+export const projects: Project[] = portfolioProjects.filter(isShowroomProject)

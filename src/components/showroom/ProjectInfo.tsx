@@ -8,7 +8,7 @@ export function ProjectInfo({ project }: { project: Project }) {
         <div>
           <span className="showroom-info-eyebrow">Project</span>
           <h3>{project.name}</h3>
-          <p>{project.tagline}</p>
+          <p>{project.summary}</p>
         </div>
         {project.repoUrl && (
           <a className="showroom-repo-link" href={project.repoUrl} target="_blank" rel="noreferrer">
